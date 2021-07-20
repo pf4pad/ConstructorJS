@@ -26,7 +26,32 @@
 
 	 */
 
-	const moveConstructor = () => {
+	const getElemment = (tagName) => {
+		const element = document.createElement(tagName);
+		return element;
+	}
 
+	const createHeader = (param) => {
+		const header = getElemment('header');
+
+		return header;
+
+	}
+
+	const moveConstructor = (selector, options) => {
+			const app = document.querySelector(selector);
+			if (options.header) {
+				
+				app.append(createHeader(options.header));
+			}
+			
 
 	};
+
+	moveConstructor('.app', {
+		title: 'Ведьмак',
+		header:{
+			logo: ''
+		}
+
+	});
