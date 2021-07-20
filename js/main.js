@@ -26,13 +26,32 @@
 
 	 */
 
-	const getElemment = (tagName) => {
+	const getElemment = (tagName, classNames) => {
 		const element = document.createElement(tagName);
+		if (classNames) {
+			element.classList.add(...classNames);
+		}
 		return element;
 	}
 
 	const createHeader = (param) => {
 		const header = getElemment('header');
+
+		const container = getElemment('div', ['container']);
+
+		const wrapper = getElemment('div', ['header']);
+
+		if (param.header.logo) {
+			const logo = getElemment('img', ['logo']);
+			logo.src = param.header.logo;
+			logo.alt = 'Логотип ' + param.title;
+			wrapper.append(logo);
+		}
+
+
+		header.append(container);
+		container.append(wrapper);
+
 
 		return header;
 
@@ -40,9 +59,12 @@
 
 	const moveConstructor = (selector, options) => {
 			const app = document.querySelector(selector);
+
+			app.classList.add('body-app')
+
 			if (options.header) {
 				
-				app.append(createHeader(options.header));
+				app.append(createHeader(options));
 			}
 			
 
@@ -51,7 +73,7 @@
 	moveConstructor('.app', {
 		title: 'Ведьмак',
 		header:{
-			logo: ''
+			logo: 'witcher/logo.png'
 		}
 
 	});
