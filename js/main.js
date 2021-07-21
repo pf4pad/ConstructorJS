@@ -109,7 +109,7 @@ const createMain = ({
 	main: { genre, rating, description, trailer } }) => {
 
 	const main = getElement('main');
-	const container = ('div', ['container']);
+	const container = getElement('div', ['container']);
 	main.append(container);
 	const wrapper = getElement('div', ['main-content']);
 	container.append(wrapper);
@@ -148,7 +148,7 @@ const createMain = ({
 		content.append(ratingBlock);
 	}
 
-
+	return main
 
 };
 
